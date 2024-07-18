@@ -4,8 +4,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "start": "node build/server.js",
-    "build": "tsup src --out-dir build"
+    "start": "node public/server.js",
+    "build": "tsup src --out-dir public"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
