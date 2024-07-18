@@ -13,7 +13,7 @@ const App = () => (
   <div className="text-3xl mx-auto max-w-6xl">
     <Router>
       <Routes>
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/" element={<Dashboard />} />
       </Routes>
     </Router>
   </div>
