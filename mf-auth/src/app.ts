@@ -13,12 +13,19 @@ const app = express();
 
 app.use(express.json());
 
-app.use(cors(({
-  origin: ['https://managee-mf-container.onrender.com/', 'https://managee-mf-event.onrender.com/', 'https://managee-mf-admin.onrender.com'],
+const corsOptions = {
+  origin: [
+    'https://managee-mf-container.onrender.com',
+    'https://managee-mf-event.onrender.com',
+    'https://managee-mf-admin.onrender.com'
+  ],
   credentials: true,
-  methods: 'GET,PUT,POST,DELTE,OPTIONS',
-  allowedHeaders: ['Content-Type', 'Authorization']
-})))
+  methods: 'GET,PUT,POST,DELETE,OPTIONS',
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  optionsSuccessStatus: 204
+};
+
+app.use(cors((corsOptions)))
 
 app.use(userRouter);
 app.use(eventRouter);
