@@ -6,9 +6,17 @@ import CreateEvent from '../pages/CreateEvent'
 import EditEvent from '../pages/EditEvent'
 import EventDetails from '../pages/EventDetails'
 import EventSubscribe from '../pages/EventSubscribe'
+import { useUser } from 'hooks/UserContext'
+import axios from 'axios'
 
 
 function MyRoutes() {
+  const { userData } = useUser()
+
+  if (userData) {
+    axios.defaults.headers.authorization = `Bearer ${userData.token}`
+  }
+
   return (
     <Router>
       <Routes>
