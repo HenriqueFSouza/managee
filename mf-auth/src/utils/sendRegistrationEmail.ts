@@ -15,7 +15,7 @@ export const sendRegistrationEmail = async (email: string, event: Models.IEvent,
       <p><strong>Data:</strong> ${formatDateToLong(event.date.toString())}</p>
       <p><strong>Horário:</strong> ${event.startTime} - ${event.endTime}</p>
       <p><strong>Local:</strong> ${event.isOnline ? `<a href="${event.location}">Online</a>` : event.location}</p>
-      <a href='${process.env.WEBSITE_URL}/eventos/confirmar-inscricao?token=${token}'>Confirmar minha inscrição!</a>
+      <a href='${process.env.WEBSITE_URL || 'https://managee-mf-container.onrender.com'}/eventos/confirmar-inscricao?token=${token}'>Confirmar minha inscrição!</a>
     `,
   };
 
