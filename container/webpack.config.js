@@ -41,14 +41,14 @@ module.exports = (_, argv) => ({
       name: "container",
       filename: "remoteEntry.js",
       remotes: {
-        dashboard: "mf_admin@http://localhost:3003/remoteEntry.js",
-        meus_eventos: "mf_event@http://localhost:3002/remoteEntry.js",
-        criar_evento: "mf_event@http://localhost:3002/remoteEntry.js",
-        editar_evento: "mf_event@http://localhost:3002/remoteEntry.js",
-        detalhes_evento: "mf_event@http://localhost:3002/remoteEntry.js",
-        inscricao_evento: "mf_event@http://localhost:3002/remoteEntry.js",
-        confimacao_inscricao: "mf_event@http://localhost:3002/remoteEntry.js",
-        hooks: "container@http://localhost:3000/remoteEntry.js"
+        dashboard: "mf_admin@https://managee-mf-admin.onrender.com/remoteEntry.js",
+        meus_eventos: "mf_event@https://managee-mf-event.onrender.com/remoteEntry.js",
+        criar_evento: "mf_event@https://managee-mf-event.onrender.com/remoteEntry.js",
+        editar_evento: "mf_event@https://managee-mf-event.onrender.com/remoteEntry.js",
+        detalhes_evento: "mf_event@https://managee-mf-event.onrender.com/remoteEntry.js",
+        inscricao_evento: "mf_event@https://managee-mf-event.onrender.com/remoteEntry.js",
+        confimacao_inscricao: "mf_event@https://managee-mf-event.onrender.com/remoteEntry.js",
+        hooks: "container@https://managee-mf-container.onrender.com/remoteEntry.js"
       },
       exposes: {
         "./UserContext": "./src/hooks/UserContext"

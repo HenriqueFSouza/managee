@@ -41,7 +41,7 @@ module.exports = (_, argv) => ({
       name: "mf_admin",
       filename: "remoteEntry.js",
       remotes: {
-        hooks: "container@http://localhost:3000/remoteEntry.js"
+        hooks: "container@https://managee-mf-container.onrender.com/remoteEntry.js"
       },
       exposes: {
         "./Dashboard": "./src/pages/Dashboard.tsx",
