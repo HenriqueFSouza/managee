@@ -35,7 +35,7 @@ const Register = () => {
         password: data.password,
         role: 'participant'
       });
-      navigate('/login')
+      navigate('/')
     } catch (error) {
       if (error instanceof AxiosError) {
         if (error.response?.status === 400) return toast.error(error.response?.data.error)

@@ -14,7 +14,9 @@ const app = express();
 app.use(express.json());
 
 app.use(cors(({
-  origin: '*'
+  origin: ['https://managee-mf-container.onrender.com/', 'https://managee-mf-event.onrender.com/', 'https://managee-mf-admin.onrender.com'],
+  credentials: true,
+  methods: 'GET, PUT, POST, DELTE, OPTIONS'
 })))
 
 app.use(userRouter);

@@ -1,6 +1,7 @@
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Dotenv = require('dotenv-webpack');
 const deps = require("./package.json").dependencies;
 
 module.exports = (_, argv) => ({
@@ -71,5 +72,6 @@ module.exports = (_, argv) => ({
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
     }),
+   new Dotenv()
   ],
 });
