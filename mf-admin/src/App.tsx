@@ -9,14 +9,14 @@ import './index.scss'
 import Dashboard from './pages/Dashboard'
 import { ToastContainer } from 'react-toastify'
 import { useUser } from 'hooks/UserContext'
-import axios from 'axios';
+import { api } from './services/api';
 
 
 const App = () => {
   const { userData } = useUser()
 
   if (userData) {
-    axios.defaults.headers.authorization = `Bearer ${userData.token}`
+    api.defaults.headers.common['Authorization'] = `Bearer ${userData.token}`
   }
 
   return (

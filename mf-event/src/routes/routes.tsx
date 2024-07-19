@@ -7,14 +7,14 @@ import EditEvent from '../pages/EditEvent'
 import EventDetails from '../pages/EventDetails'
 import EventSubscribe from '../pages/EventSubscribe'
 import { useUser } from 'hooks/UserContext'
-import axios from 'axios'
+import { api } from '../services/api'
 
 
 function MyRoutes() {
   const { userData } = useUser()
 
   if (userData) {
-    axios.defaults.headers.authorization = `Bearer ${userData.token}`
+    api.defaults.headers.common['Authorization'] = `Bearer ${userData.token}`
   }
 
   return (
