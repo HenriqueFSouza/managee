@@ -4,7 +4,7 @@ const Dotenv = require('dotenv-webpack');
 const deps = require("./package.json").dependencies;
 module.exports = (_, argv) => ({
   output: {
-    publicPath: argv.mode === "development" ? "http://localhost:3002/": "https://managee-mf-event.onrender.com",
+    publicPath: argv.mode === "development" ? "http://localhost:3002/": "https://managee-mf-event.onrender.com/",
   },
 
   resolve: {
