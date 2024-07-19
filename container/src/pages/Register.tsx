@@ -33,7 +33,7 @@ const Register = () => {
         username: data.name,
         email: data.email.toLocaleLowerCase(),
         password: data.password,
-        role: 'participant'
+        role: 'organizer'
       });
       navigate('/')
     } catch (error) {

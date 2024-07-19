@@ -36,7 +36,7 @@ class DashboardController {
       const events = await Event.find({ organizer: req.user.id });
 
       if (!events.length) {
-        return res.status(404).json({ message: 'No events found for this user' });
+        return res.status(200).json({ pendingSubscribes: 0, confirmationRate: 0 });
       }
 
       const eventIds = events.map(event => event._id);
