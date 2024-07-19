@@ -13,7 +13,7 @@ const app = express();
 
 app.use(express.json());
 
-const corsOptions = {
+app.use(cors(({
   origin: [
     'https://managee-mf-container.onrender.com',
     'https://managee-mf-event.onrender.com',
@@ -23,18 +23,17 @@ const corsOptions = {
   methods: 'GET,PUT,POST,DELETE,OPTIONS',
   allowedHeaders: ['Content-Type', 'Authorization'],
   optionsSuccessStatus: 204
-};
-
-app.use(cors((corsOptions)))
-
-app.use(userRouter);
-app.use(eventRouter);
-app.use(dashboardRouter);
-app.use(authRouter);
+})))
 
 // Health check route
 app.get('/', (_, res: Response) => {
   return res.status(200).json({ ok: true })
 })
+
+app.use(authRouter);
+app.use(userRouter);
+app.use(eventRouter);
+app.use(dashboardRouter);
+
 
 export default app;
