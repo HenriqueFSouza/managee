@@ -25,6 +25,11 @@ app.use(cors(({
   optionsSuccessStatus: 204
 })))
 
+app.use((req, res, next) => {
+  console.log('Request Origin:', req.headers.origin);
+  console.log('Request Headers:', req.headers);
+  next();
+});
 // Health check route
 app.get('/', (_, res: Response) => {
   return res.status(200).json({ ok: true })
