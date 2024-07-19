@@ -9,24 +9,27 @@ function PrivateRoute({ isAdmin }: { isAdmin?: boolean }) {
   const { logout } = useUser()
   const navigate = useNavigate()
 
-
-
   React.useEffect(() => {
-    const user = localStorage.getItem('managee:userData')
+    const user = localStorage.getItem('managee:userData');
+    const parsedUser = user ? JSON.parse(user) : null;
 
     async function checkAuth() {
       try {
-        await api.get('/auth')
+        if (parsedUser && parsedUser.token) {
+          // Set the token in the api instance for the subsequent request
+          api.defaults.headers.common['Authorization'] = `Bearer ${parsedUser.token}`;
+          await api.get('/auth');
+        } else {
+          throw new Error('No token found');
+        }
       } catch (err) {
-        logout()
-        navigate('/')
+        logout();
+        navigate('/');
       }
     }
 
-    if (user) checkAuth()
-    if (!user) navigate('/')
-
-  }, [])
+    checkAuth();
+  }, [logout, navigate]);
 
   return (
     <div className="flex flex-col h-screen w-full">
