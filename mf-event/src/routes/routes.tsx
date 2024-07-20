@@ -24,7 +24,7 @@ function MyRoutes() {
         <Route path="/criar-evento" element={<CreateEvent />} />
         <Route path="/editar-evento" element={<EditEvent />} />
         <Route path="/detalhes-evento" element={<EventDetails />} />
-        <Route path="/inscricao" element={<EventSubscribe />} />
+        <Route path="/eventos/inscricao/:id" element={<EventSubscribe />} />
       </Routes>
     </Router>
   )
