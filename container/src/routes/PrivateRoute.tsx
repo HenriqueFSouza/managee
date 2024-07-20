@@ -1,5 +1,5 @@
 import React from 'react'
-import { Outlet, useNavigate } from 'react-router-dom'
+import { Outlet, Navigate } from 'react-router-dom'
 import Header from '../components/Header'
 import { useUser } from 'hooks/UserContext'
 import { api } from '../services/api'
@@ -7,9 +7,9 @@ import { api } from '../services/api'
 
 function PrivateRoute({ isAdmin }: { isAdmin?: boolean }) {
   const { logout } = useUser()
-  const navigate = useNavigate()
 
   React.useEffect(() => {
+    if (!isAdmin) return
     const user = localStorage.getItem('managee:userData');
     const parsedUser = user ? JSON.parse(user) : null;
 
@@ -24,12 +24,12 @@ function PrivateRoute({ isAdmin }: { isAdmin?: boolean }) {
         }
       } catch (err) {
         logout();
-        navigate('/');
+        <Navigate to='/' replace={true} />
       }
     }
 
     checkAuth();
-  }, [logout, navigate]);
+  }, [logout]);
 
   return (
     <div className="flex flex-col h-screen w-full">
