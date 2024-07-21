@@ -1,12 +1,13 @@
 import React from 'react'
-import { Outlet, Navigate } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 import Header from '../components/Header'
 import { useUser } from 'hooks/UserContext'
 import { api } from '../services/api'
 
 
 function PrivateRoute({ isAdmin }: { isAdmin?: boolean }) {
-  const { logout } = useUser()
+  const { logout } = useUser();
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     if (!isAdmin) return
@@ -24,7 +25,7 @@ function PrivateRoute({ isAdmin }: { isAdmin?: boolean }) {
         }
       } catch (err) {
         logout();
-        <Navigate to='/' replace={true} />
+        navigate('/', { replace: true });
       }
     }
 
