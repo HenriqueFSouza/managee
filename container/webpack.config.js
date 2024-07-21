@@ -5,7 +5,6 @@ const Dotenv = require('dotenv-webpack');
 const deps = require("./package.json").dependencies;
 
 module.exports = (_, argv) => ({
-  entry: '.src/index.ts',
   output: {
     publicPath: argv.mode === "development"  ? "http://localhost:3000/" : "https://managee-mf-container.onrender.com/",
   },
