@@ -22,8 +22,10 @@ function MyRoutes() {
         <Route path="/" element={<Login />} />
         <Route path="/cadastro" element={<Register />} />
 
-        <Route path="/eventos/inscricao" element={<EventSubscribe />} />
-        <Route path="/eventos/confirmar-inscricao" element={<SubscribeConfirmation />} />
+        <Route element={<PrivateRoute />}>
+          <Route path="/eventos/inscricao/:id" element={<EventSubscribe />} />
+          <Route path="/eventos/confirmar-inscricao" element={<SubscribeConfirmation />} />
+        </Route>
 
         <Route element={<PrivateRoute isAdmin />}>
 

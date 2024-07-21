@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import z from 'zod';
@@ -12,7 +13,6 @@ import Button from '../components/Button';
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { AxiosError } from 'axios';
 import PageContainer from '../components/PageContainer';
-import { useQuery } from '../hooks/useQuery';
 
 const registrationSchema = z.object({
   name: z.string().nonempty('Nome é obrigatório'),
@@ -22,7 +22,7 @@ const registrationSchema = z.object({
 type RegistrationFormInputs = z.infer<typeof registrationSchema>;
 
 const EventSubscribe: React.FC = () => {
-  const id = useQuery("event");
+  const { id } = useParams<{ id: string }>();
   const [event, setEvent] = useState<EventDetailsProps | null>(null);
   const [loading, setLoading] = useState(true);
   const [step, setStep] = useState(0);

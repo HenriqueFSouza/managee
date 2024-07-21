@@ -12,7 +12,7 @@ interface EventCardProps {
 const EventCard: React.FC<EventCardProps> = ({ event }) => {
 
   const handleCopy = () => {
-    window.navigator.clipboard.writeText(`${process.env.WEBSITE_URL || 'https://managee-mf-container.onrender.com'}/eventos/inscricao?event=${event._id}`)
+    window.navigator.clipboard.writeText(`${process.env.WEBSITE_URL || 'https://managee-mf-container.onrender.com'}/eventos/inscricao/${event._id}`)
     toast.success('Link de inscrições copiado!')
   }
 
