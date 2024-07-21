@@ -1,19 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { EventDetailsProps } from '../pages/EventDetails';
 import { FaEdit, FaListAlt, FaCopy } from "react-icons/fa";
 import { formatDateToLong } from '../utils/formatDate';
-import { toast } from 'react-toastify';
 
 interface EventCardProps {
   event: EventDetailsProps;
 }
 
 const EventCard: React.FC<EventCardProps> = ({ event }) => {
+  const navigate = useNavigate();
 
   const handleCopy = () => {
-    window.navigator.clipboard.writeText(`${process.env.WEBSITE_URL || 'https://managee-mf-container.onrender.com'}/eventos/inscricao/${event._id}`)
-    toast.success('Link de inscrições copiado!')
+    navigate(`/eventos/inscricao/${event._id}`)
+    // window.navigator.clipboard.writeText(`${process.env.WEBSITE_URL || 'https://managee-mf-container.onrender.com'}/eventos/inscricao/${event._id}`)
+    // toast.success('Link de inscrições copiado!')
   }
 
   return (
