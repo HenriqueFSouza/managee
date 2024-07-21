@@ -5,13 +5,9 @@ import axios from 'axios';
 import { useQuery } from '../hooks/useQuery';
 
 const SubscribeConfirmation: React.FC = () => {
-  const query = useQuery();
+  const token = useQuery("token");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-
-  const token = query.get("token")
-
-  console.log('TOKEN', token)
 
   useEffect(() => {
     const fetchEvent = async () => {

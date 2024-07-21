@@ -21,7 +21,7 @@ const UpcomingEventsTable: React.FC<Props> = ({ data, isLoading }) => {
   const navigate = useNavigate();
 
   const copyLink = (eventId: string) => {
-    const link = `${process.env.WEBSITE_URL || 'https://managee-mf-container.onrender.com'}/eventos/inscricao/${eventId}`;
+    const link = `${process.env.WEBSITE_URL || 'https://managee-mf-container.onrender.com'}/eventos/inscricao?event=${eventId}`;
     navigator.clipboard.writeText(link);
     toast.success('Link de inscrições copiado!');
   };
