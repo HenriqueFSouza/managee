@@ -5,6 +5,7 @@ const Dotenv = require('dotenv-webpack');
 const deps = require("./package.json").dependencies;
 
 module.exports = (_, argv) => ({
+  entry: '.src/index.ts',
   output: {
     publicPath: argv.mode === "development"  ? "http://localhost:3000/" : "https://managee-mf-container.onrender.com/",
   },
@@ -26,7 +27,7 @@ module.exports = (_, argv) => ({
       },
       {
         test: /\.(css|s[ac]ss)$/i,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"],
+        use: ["style-loader", "css-loader", "postcss-loader"],
       },
       {
         test: /\.(ts|tsx|js|jsx)$/,
@@ -68,9 +69,6 @@ module.exports = (_, argv) => ({
     }),
     new HtmlWebPackPlugin({
       template: "./src/index.html",
-    }),
-    new MiniCssExtractPlugin({
-      filename: "[name].[contenthash].css",
     }),
    new Dotenv()
   ],
