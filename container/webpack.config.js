@@ -1,12 +1,16 @@
+const path = require('path');
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const Dotenv = require('dotenv-webpack');
 const deps = require("./package.json").dependencies;
 
 module.exports = (_, argv) => ({
+  entry: './src/index.ts',
   output: {
     publicPath: argv.mode === "development"  ? "http://localhost:3000/" : "https://managee-mf-container.onrender.com/",
+    filename: 'bundle.js', // Nome do arquivo JavaScript gerado
+    path: path.resolve(__dirname, 'dist'), // Pasta de saída
+    publicPath: '/', // Caminho público para assets
   },
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
